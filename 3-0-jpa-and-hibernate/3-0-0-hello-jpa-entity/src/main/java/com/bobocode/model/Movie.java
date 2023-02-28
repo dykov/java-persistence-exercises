@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
+
 /**
  * TODO: you're job is to implement mapping for JPA entity {@link Movie}
  * - explicitly specify the table name
@@ -15,12 +17,20 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@Table(name = "movie")
+@Entity
 public class Movie {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "name", nullable = false)
     private String name;
 
+    @Column(name = "director", nullable = false)
     private String director;
 
+    @Column(name = "duration")
     private Integer durationSeconds;
 }
